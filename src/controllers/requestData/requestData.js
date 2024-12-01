@@ -10,7 +10,6 @@ exports.requestData = async (req, res) => {
     } = req.body;
 
     try {
-        // Create the table 'change_tracker' if it doesn't already exist
         const createTableQuery = `
             CREATE TABLE IF NOT EXISTS change_tracker (
                 id SERIAL PRIMARY KEY,
@@ -27,7 +26,6 @@ exports.requestData = async (req, res) => {
         
         await client.query(createTableQuery);
 
-        // Insert the data into the 'change_tracker' table
         const insertQuery = `
             INSERT INTO change_tracker (table_name, old_data, new_data, "user", comment)
             VALUES ($1, $2, $3, $4, $5)
