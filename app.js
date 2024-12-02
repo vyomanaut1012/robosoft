@@ -26,6 +26,9 @@ app.use('/', routesPath);
 const { databaseConnection } = require('./src/configuration/database/database.js');
 databaseConnection();
 
+const { databaseUpdateConnection } = require('./src/configuration/database/databaseUpdate.js');
+databaseUpdateConnection();
+
 app.get('/', (req, res) => {
   console.log('welcome in docker');
   res.status(200).json({
