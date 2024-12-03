@@ -8,6 +8,7 @@ const { tableData } = require('../controllers/tableData/tableData.js');
 const { requestData } = require('../controllers/requestData/requestData.js');
 const { approve } = require('../controllers/approve/approve.js');
 const { reject } = require('../controllers/reject/reject.js');
+const { fetchChangeTrackerData } = require('../controllers/changeTrackerData/fetchChangeTrackerData.js');
 
 
 router.post('/signin', signin);
@@ -17,5 +18,6 @@ router.get('/tableData/:name', tableData);
 router.post('/requestdata', requestData);
 router.post('/approve', approve);
 router.post('/reject', reject);
+router.get('/fetchchangetrackerdata', fetchChangeTrackerData);
 
 module.exports = router;
