@@ -1,18 +1,28 @@
 const { client_update } = require('../../configuration/database/databaseUpdate.js');
+const { v4: uuidv4 } = require('uuid');
 
 exports.requestData = async (req, res) => {
+    // const userId = uuidv4();
     const {
+        id,
+        request_id,
+        table_id,
         table_name,
-        old_values,
-        new_values,
-        maker_id,
+        row_id,
+        old_data,
+        new_data,
+        status,
+        maker,
+        checker,
+        created_at,
+        updated_at,
         comments,
     } = req.body;
 
-    if (!table_name || !maker_id) {
+    if (!table_name || !maker) {
         return res.status(400).json({
             success: false,
-            message: 'table_name and maker_id are required fields',
+            message: 'table_name and maker are required fields',
         });
     }
 
@@ -23,25 +33,33 @@ exports.requestData = async (req, res) => {
 
         const insertQuery = `
             INSERT INTO app.change_tracker (
+                request_id,
+                table_id,
                 table_name,
-                maker_id,
-                old_values,
-                new_values,
+                row_id,
+                old_data,
+                new_data,
                 status,
-                comments,
+                maker,
+                checker,
                 created_at,
-                updated_at
+                updated_at,
+                comments
             )
-            VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW(), $10)
             RETURNING *;
         `;
 
         const values = [
+            request_id || uuidv4(),
+            table_id || null,
             table_name,
-            maker_id,
-            old_values ? JSON.stringify(old_values) : null,
-            new_values ? JSON.stringify(new_values) : null,
-            'pending',
+            row_id || null,
+            old_data ? JSON.stringify(old_data) : null,
+            new_data ? JSON.stringify(new_data) : null,
+            status || 'pending',
+            maker,
+            checker || null,
             comments || null
         ];
 
