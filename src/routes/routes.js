@@ -9,6 +9,7 @@ const { requestData } = require('../controllers/requestData/requestData.js');
 const { approve } = require('../controllers/approve/approve.js');
 const { reject } = require('../controllers/reject/reject.js');
 const { fetchChangeTrackerData } = require('../controllers/changeTrackerData/fetchChangeTrackerData.js');
+const { columnStatusPermission } = require('../controllers/columnStatusPermission/columnStatusPermission.js');
 
 
 router.post('/signin', signin);
@@ -19,5 +20,6 @@ router.post('/requestdata', requestData);
 router.post('/approve', approve);
 router.post('/reject', reject);
 router.get('/fetchchangetrackerdata', fetchChangeTrackerData);
+router.post('/columnstatuspermission', columnStatusPermission);
 
 module.exports = router;
