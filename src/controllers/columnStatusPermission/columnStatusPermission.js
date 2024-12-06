@@ -1,12 +1,12 @@
 const { client_update } = require('../../configuration/database/databaseUpdate.js');
 
 exports.columnStatusPermission = async (req, res) => {
-    const { table_id, column_list } = req.body;
+    const { table_name, column_list } = req.body;
 
-    if (!table_id || !Array.isArray(column_list)) {
+    if (!table_name || !Array.isArray(column_list)) {
         return res.status(400).json({
             success: false,
-            message: '"table_id" and "column_list" are required fields, and "column_list" must be an array.',
+            message: '"table_name" and "column_list" are required fields, and "column_list" must be an array.',
         });
     }
 
@@ -16,9 +16,9 @@ exports.columnStatusPermission = async (req, res) => {
         const checkQuery = `
             SELECT column_list 
             FROM app.column_permission
-            WHERE table_id = $1;
+            WHERE table_name = $1;
         `;
-        const checkResult = await client_update.query(checkQuery, [table_id]);
+        const checkResult = await client_update.query(checkQuery, [table_name]);
 
         if (checkResult.rowCount > 0) {
             const existingColumnList = checkResult.rows[0].column_list || [];
@@ -38,16 +38,16 @@ exports.columnStatusPermission = async (req, res) => {
                 UPDATE app.column_permission
                 SET column_list = $1,
                     updated_at = NOW()
-                WHERE table_id = $2;
+                WHERE table_name = $2;
             `;
-            await client_update.query(updateQuery, [JSON.stringify(updatedColumnList), table_id]);
+            await client_update.query(updateQuery, [JSON.stringify(updatedColumnList), table_name]);
         } else {
             // Row does not exist, insert a new row
             const insertQuery = `
-                INSERT INTO app.column_permission (table_id, column_list, created_at, updated_at)
+                INSERT INTO app.column_permission (table_name, column_list, created_at, updated_at)
                 VALUES ($1, $2, NOW(), NOW());
             `;
-            await client_update.query(insertQuery, [table_id, JSON.stringify(column_list)]);
+            await client_update.query(insertQuery, [table_name, JSON.stringify(column_list)]);
         }
 
         await client_update.query('COMMIT');
