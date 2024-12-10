@@ -11,6 +11,7 @@ const { reject } = require('../controllers/reject/reject.js');
 const { fetchChangeTrackerData } = require('../controllers/changeTrackerData/fetchChangeTrackerData.js');
 const { columnStatusPermission } = require('../controllers/columnStatusPermission/columnStatusPermission.js');
 const { fetchColumn } = require('../controllers/fetchColumn/fetchColumn.js');
+const { fetchColumnStatus } = require('../controllers/fetchColumnStatus/fetchcolumnstatus.js');
 const { updateColumnDropDown } = require('../controllers/updateColumnDropdown/updateColumnDropDown.js');
 const { fetchColumnDropDown } = require('../controllers/fetchColumnDropdown/fetchColumnDropDown.js');
 
@@ -25,6 +26,7 @@ router.post('/reject', reject);
 router.get('/fetchchangetrackerdata', fetchChangeTrackerData);
 router.post('/columnstatuspermission', columnStatusPermission);
 router.post('/fetchcolumn', fetchColumn);
+router.post('/fetchcolumnstatus', fetchColumnStatus);
 router.post('/updatecolumndropdown', updateColumnDropDown);
 router.post('/fetchcolumndropdown', fetchColumnDropDown);
 
