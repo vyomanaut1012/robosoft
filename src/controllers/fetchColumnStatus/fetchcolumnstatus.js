@@ -24,7 +24,7 @@ exports.fetchColumnStatus = async (req, res) => {
 
         // Check if the row exists
         if (result.rows.length === 0) {
-            return res.status(404).json({
+            return res.status(200).json({
                 success: false,
                 message: 'No matching record found for the provided table_name.',
             });
