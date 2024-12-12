@@ -14,6 +14,7 @@ const { fetchColumn } = require('../controllers/fetchColumn/fetchColumn.js');
 const { fetchColumnStatus } = require('../controllers/fetchColumnStatus/fetchcolumnstatus.js');
 const { updateColumnDropDown } = require('../controllers/updateColumnDropdown/updateColumnDropDown.js');
 const { fetchColumnDropDown } = require('../controllers/fetchColumnDropdown/fetchColumnDropDown.js');
+const { fetchDropDownOptions } = require('../controllers/fetchDropDownOptions/fetchDropDownOptions.js');
 
 
 router.post('/signin', signin);
@@ -29,5 +30,6 @@ router.post('/fetchcolumn', fetchColumn);
 router.post('/fetchcolumnstatus', fetchColumnStatus);
 router.post('/updatecolumndropdown', updateColumnDropDown);
 router.post('/fetchcolumndropdown', fetchColumnDropDown);
+router.post('/fetchdropdownoptions', fetchDropDownOptions);
 
 module.exports = router;
