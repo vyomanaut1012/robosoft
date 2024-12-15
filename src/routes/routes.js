@@ -15,6 +15,8 @@ const { fetchColumnStatus } = require('../controllers/fetchColumnStatus/fetchcol
 const { updateColumnDropDown } = require('../controllers/updateColumnDropdown/updateColumnDropDown.js');
 const { fetchColumnDropDown } = require('../controllers/fetchColumnDropdown/fetchColumnDropDown.js');
 const { fetchDropDownOptions } = require('../controllers/fetchDropDownOptions/fetchDropDownOptions.js');
+const { allApprove } = require('../controllers/approveAll/allApprove.js');
+const { allReject } = require('../controllers/allReject/allReject.js');
 
 
 router.post('/signin', signin);
@@ -31,5 +33,7 @@ router.post('/fetchcolumnstatus', fetchColumnStatus);
 router.post('/updatecolumndropdown', updateColumnDropDown);
 router.post('/fetchcolumndropdown', fetchColumnDropDown);
 router.post('/fetchdropdownoptions', fetchDropDownOptions);
+router.post('/approveall', allApprove);
+router.post('/rejectall', allReject);
 
 module.exports = router;
