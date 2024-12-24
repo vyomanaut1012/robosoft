@@ -17,6 +17,10 @@ const { fetchColumnDropDown } = require('../controllers/fetchColumnDropdown/fetc
 const { fetchDropDownOptions } = require('../controllers/fetchDropDownOptions/fetchDropDownOptions.js');
 const { allApprove } = require('../controllers/approveAll/allApprove.js');
 const { allReject } = require('../controllers/allReject/allReject.js');
+const { sendOTP } = require('../controllers/sendOTP/sendOTP.js');
+const { verifyOTP } = require('../controllers/verifyOTP/verifyOTP.js');
+const { addGroup } = require('../controllers/tablesGroup/tableGroup.js');
+const { addTable } = require('../controllers/tablesGroup/tableGroup.js');
 
 
 router.post('/signin', signin);
@@ -35,5 +39,9 @@ router.post('/fetchcolumndropdown', fetchColumnDropDown);
 router.post('/fetchdropdownoptions', fetchDropDownOptions);
 router.post('/approveall', allApprove);
 router.post('/rejectall', allReject);
+router.post('/sendotp', sendOTP);
+router.post('/verifyotp', verifyOTP);
+router.post('/addgroup', addGroup);
+router.post('/addtable', addTable);
 
 module.exports = router;
