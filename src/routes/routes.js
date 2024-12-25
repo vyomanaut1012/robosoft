@@ -22,6 +22,8 @@ const { verifyOTP } = require('../controllers/verifyOTP/verifyOTP.js');
 const { addGroup } = require('../controllers/tablesGroup/tableGroup.js');
 const { addTable } = require('../controllers/tablesGroup/tableGroup.js');
 const { getGroupList } = require('../controllers/getGroupList/getGroupList.js');
+const { removeGroup } = require('../controllers/removeGroup/removeGroup.js');
+const { removeTable } = require('../controllers/removeTable/removeTable.js');
 
 
 router.post('/signin', signin);
@@ -45,5 +47,7 @@ router.post('/verifyotp', verifyOTP);
 router.post('/addgroup', addGroup);
 router.post('/addtable', addTable);
 router.get('/getgrouplist', getGroupList);
+router.post('/removegroup', removeGroup);
+router.post('/removetable', removeTable);
 
 module.exports = router;
