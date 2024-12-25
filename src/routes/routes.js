@@ -21,6 +21,7 @@ const { sendOTP } = require('../controllers/sendOTP/sendOTP.js');
 const { verifyOTP } = require('../controllers/verifyOTP/verifyOTP.js');
 const { addGroup } = require('../controllers/tablesGroup/tableGroup.js');
 const { addTable } = require('../controllers/tablesGroup/tableGroup.js');
+const { getGroupList } = require('../controllers/getGroupList/getGroupList.js');
 
 
 router.post('/signin', signin);
@@ -43,5 +44,6 @@ router.post('/sendotp', sendOTP);
 router.post('/verifyotp', verifyOTP);
 router.post('/addgroup', addGroup);
 router.post('/addtable', addTable);
+router.get('/getgrouplist', getGroupList);
 
 module.exports = router;
