@@ -25,6 +25,9 @@ const { getGroupList } = require('../controllers/getGroupList/getGroupList.js');
 const { removeGroup } = require('../controllers/removeGroup/removeGroup.js');
 const { removeTable } = require('../controllers/removeTable/removeTable.js');
 const { getAllCheckerRequest } = require('../controllers/getAllCheckerRequest/getAllCheckerRequest.js');
+const { addRow } = require('../controllers/addRow/addRow.js');
+const { fetchRowRequest } = require('../controllers/fetchRowRequest/fetchRowRequest.js');
+const { acceptRow } = require('../controllers/acceptRow/acceptRow.js');
 
 
 router.post('/signin', signin);
@@ -51,5 +54,8 @@ router.get('/getgrouplist', getGroupList);
 router.post('/removegroup', removeGroup);
 router.post('/removetable', removeTable);
 router.post('/getallcheckerrequest', getAllCheckerRequest);
+router.post('/addrow', addRow);
+router.post('/fetchrowrequest', fetchRowRequest);
+router.post('/acceptrow', acceptRow);
 
 module.exports = router;
