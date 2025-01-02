@@ -28,6 +28,7 @@ const { getAllCheckerRequest } = require('../controllers/getAllCheckerRequest/ge
 const { addRow } = require('../controllers/addRow/addRow.js');
 const { fetchRowRequest } = require('../controllers/fetchRowRequest/fetchRowRequest.js');
 const { acceptRow } = require('../controllers/acceptRow/acceptRow.js');
+const { rejectRow } = require('../controllers/rejectRow/rejectRow.js');
 
 
 router.post('/signin', signin);
@@ -57,5 +58,6 @@ router.post('/getallcheckerrequest', getAllCheckerRequest);
 router.post('/addrow', addRow);
 router.post('/fetchrowrequest', fetchRowRequest);
 router.post('/acceptrow', acceptRow);
+router.post('/rejectrow', rejectRow);
 
 module.exports = router;
