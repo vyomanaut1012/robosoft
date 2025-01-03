@@ -29,6 +29,7 @@ const { addRow } = require('../controllers/addRow/addRow.js');
 const { fetchRowRequest } = require('../controllers/fetchRowRequest/fetchRowRequest.js');
 const { acceptRow } = require('../controllers/acceptRow/acceptRow.js');
 const { rejectRow } = require('../controllers/rejectRow/rejectRow.js');
+const { rejectAllRow } = require('../controllers/rejectAllRow/rejectAllRow.js');
 
 
 router.post('/signin', signin);
@@ -59,5 +60,6 @@ router.post('/addrow', addRow);
 router.post('/fetchrowrequest', fetchRowRequest);
 router.post('/acceptrow', acceptRow);
 router.post('/rejectrow', rejectRow);
+router.post('/rejectallrow', rejectAllRow);
 
 module.exports = router;
