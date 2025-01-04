@@ -27,9 +27,10 @@ const { removeTable } = require('../controllers/removeTable/removeTable.js');
 const { getAllCheckerRequest } = require('../controllers/getAllCheckerRequest/getAllCheckerRequest.js');
 const { addRow } = require('../controllers/addRow/addRow.js');
 const { fetchRowRequest } = require('../controllers/fetchRowRequest/fetchRowRequest.js');
-const { acceptRow } = require('../controllers/acceptRow/acceptRow.js');
+const { acceptRow } = require('../controllers/approveRow/acceptRow.js');
 const { rejectRow } = require('../controllers/rejectRow/rejectRow.js');
 const { rejectAllRow } = require('../controllers/rejectAllRow/rejectAllRow.js');
+const { acceptAllRow } = require('../controllers/approveAllRow/acceptAllRow.js');
 
 
 router.post('/signin', signin);
@@ -61,5 +62,6 @@ router.post('/fetchrowrequest', fetchRowRequest);
 router.post('/acceptrow', acceptRow);
 router.post('/rejectrow', rejectRow);
 router.post('/rejectallrow', rejectAllRow);
+router.post('/acceptallrow', acceptAllRow);
 
 module.exports = router;
