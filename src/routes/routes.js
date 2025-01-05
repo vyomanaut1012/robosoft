@@ -31,6 +31,7 @@ const { acceptRow } = require('../controllers/approveRow/acceptRow.js');
 const { rejectRow } = require('../controllers/rejectRow/rejectRow.js');
 const { rejectAllRow } = require('../controllers/rejectAllRow/rejectAllRow.js');
 const { acceptAllRow } = require('../controllers/approveAllRow/acceptAllRow.js');
+const { isActive } = require('../controllers/isActive/isActive.js');
 
 
 router.post('/signin', signin);
@@ -62,6 +63,6 @@ router.post('/fetchrowrequest', fetchRowRequest);
 router.post('/acceptrow', acceptRow);
 router.post('/rejectrow', rejectRow);
 router.post('/rejectallrow', rejectAllRow);
-router.post('/acceptallrow', acceptAllRow);
+router.post('/isactive', isActive);
 
 module.exports = router;
