@@ -11,7 +11,8 @@ exports.addRow = async (req, res) => {
         });
     }
 
-    const request_id = uuidv4(); // Generate a UUID
+    const request_id = uuidv4(); // Generate a UUID for request_id
+    const row_is = uuidv4(); // Generate a UUID for row_is
 
     try {
         // Start a transaction
@@ -19,10 +20,10 @@ exports.addRow = async (req, res) => {
 
         // Insert into the table
         const query = `
-            INSERT INTO app.add_row_table (request_id, table_name, row_data, status, maker, created_at, updated_at)
-            VALUES ($1, $2, $3, $4, $5, NOW(), NOW());
+            INSERT INTO app.add_row_table (request_id, table_name, row_data, status, maker, row_is, created_at, updated_at)
+            VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW());
         `;
-        const values = [request_id, table_name, row_data, 'pending', maker];
+        const values = [request_id, table_name, row_data, 'pending', maker, row_is];
 
         await client_update.query(query, values);
 
@@ -32,7 +33,7 @@ exports.addRow = async (req, res) => {
         return res.status(201).json({
             success: true,
             message: 'Row added successfully.',
-            data: { request_id },
+            data: { request_id, row_is },
         });
     } catch (error) {
         // Rollback in case of error
