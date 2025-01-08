@@ -1,19 +1,20 @@
 const { client_update } = require('../../configuration/database/databaseUpdate.js');
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 // Create email transporter
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'monkey.d.luffy.20.oct.1999@gmail.com', // Replace with your email
-        pass: 'dkyb souo pjuj risd' // Replace with your app password
+        user: process.env.OTP_EMAIL, // Replace with your email
+        pass: process.env.OTP_PASSWORD // Replace with your app password
     }
 });
 
 // Function to send OTP email
 async function sendOTPEmail(recipientEmail, otp) {
     const mailOptions = {
-        from: 'monkey.d.luffy.20.oct.1999@gmail.com', // Replace with your email
+        from: process.env.OTP_EMAIL, // Replace with your email
         to: recipientEmail,
         subject: 'Your OTP Code',
         html: `
@@ -45,15 +46,23 @@ exports.sendOTP = async (req, res) => {
         });
     }
 
+    // Validate email domain
+    if (!email.toLowerCase().endsWith('@sundaram.com')) {
+        return res.status(400).json({
+            success: false,
+            message: 'Email is not valid. Only emails ending with @Sundaram.com are allowed.',
+        });
+    }
+
     try {
         const checkUserQuery = `
             SELECT email 
             FROM app."users" 
             WHERE email = $1
         `;
-        
+
         const userExists = await client_update.query(checkUserQuery, [email]);
-        
+
         if (userExists.rows.length === 0) {
             return res.status(404).json({
                 success: false,
